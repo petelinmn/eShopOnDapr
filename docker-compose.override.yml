@@ -28,12 +28,12 @@ services:
 
   sqldata:
     environment:
-      - SA_PASSWORD=Pass@word
-      - ACCEPT_EULA=Y
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
     ports:
-      - "5433:1433"
+      - "5433:5432"
     volumes:
-      - eshop-sqldata:/var/opt/mssql
+      - eshop-sqldata:/var/opt/postgres
 
   zipkin:
     ports:
@@ -78,7 +78,7 @@ services:
       - RetryMigrations=true
       - SeqServerUrl=http://seq
       # Temporarily while waiting for https://github.com/dapr/dotnet-sdk/issues/779 to get fixed.
-      - ConnectionStrings__CatalogDB=Server=sqldata;Database=Microsoft.eShopOnDapr.Services.CatalogDb;User Id=sa;Password=Pass@word;TrustServerCertificate=true
+      - ConnectionStrings__CatalogDB=Host=sqldata;Port=5432;Database=CatalogDb;Username=postgres;Password=postgres
     ports:
       - "5101:80"
       - "50002:50001"
@@ -105,7 +105,7 @@ services:
       - OrderingApiUrlExternal=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5102
       - ShoppingAggregatorApiUrlExternal=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5121
       # Temporarily while waiting for https://github.com/dapr/dotnet-sdk/issues/779 to get fixed.
-      - ConnectionStrings__IdentityDB=Server=sqldata;Database=Microsoft.eShopOnDapr.Service.IdentityDb;User Id=sa;Password=Pass@word;TrustServerCertificate=true
+      - ConnectionStrings__IdentityDB=Host=sqldata;Port=5432;Database=IdentityDb;Username=postgres;Password=postgres
     ports:
       - "5105:80"
       - "50009:50001"
@@ -131,7 +131,7 @@ services:
       - RetryMigrations=true
       - SeqServerUrl=http://seq
       # Temporarily while waiting for https://github.com/dapr/dotnet-sdk/issues/779 to get fixed.
-      - ConnectionStrings__OrderingDB=Server=sqldata;Database=Microsoft.eShopOnDapr.Services.OrderingDb;User Id=sa;Password=Pass@word;TrustServerCertificate=true
+      - ConnectionStrings__OrderingDB=Host=sqldata;Port=5432;Database=OrderingDb;Username=postgres;Password=postgres
     ports:
       - "5102:80"
       - "50003:50001"

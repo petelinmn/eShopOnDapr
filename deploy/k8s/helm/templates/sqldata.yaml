@@ -19,17 +19,17 @@ spec:
     spec:
       containers:
         - name: sqldata
-          image: mcr.microsoft.com/mssql/server:2017-latest
+          image: postgres:13-bullseye
           imagePullPolicy: IfNotPresent
           ports:
-            - name: sqlserver
-              containerPort: 1433
+            - name: postgres
+              containerPort: 5432
               protocol: TCP
           env:
-            - name: SA_PASSWORD
-              value: Pass@word
-            - name: ACCEPT_EULA
-              value: "Y"
+            - name: POSTGRES_PASSWORD
+              value: postgres
+            - name: POSTGRES_USER
+              value: postgres
 
 ---
 

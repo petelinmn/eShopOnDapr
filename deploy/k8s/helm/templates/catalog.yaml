@@ -11,7 +11,7 @@ data:
   ASPNETCORE_URLS: http://0.0.0.0:80
   SeqServerUrl: http://seq
   # Temporarily while waiting for https://github.com/dapr/dotnet-sdk/issues/779 to get fixed.
-  ConnectionStrings__CatalogDB: Server=sqldata;Database=Microsoft.eShopOnDapr.Services.CatalogDb;User Id=sa;Password=Pass@word;TrustServerCertificate=true
+  ConnectionStrings__CatalogDB: Host=sqldata;Port=5432;Database=CatalogDb;Username=postgres;Password=postgres
 
 ---
 

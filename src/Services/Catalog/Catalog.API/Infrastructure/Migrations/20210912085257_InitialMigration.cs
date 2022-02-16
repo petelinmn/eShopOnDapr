@@ -23,7 +23,7 @@ namespace Microsoft.eShopOnDapr.Services.Catalog.API.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -35,7 +35,7 @@ namespace Microsoft.eShopOnDapr.Services.Catalog.API.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,9 +47,9 @@ namespace Microsoft.eShopOnDapr.Services.Catalog.API.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(4,2)", precision: 4, scale: 2, nullable: false),
-                    PictureFileName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Price = table.Column<decimal>(type: "numeric(4,2)", precision: 4, scale: 2, nullable: false),
+                    PictureFileName = table.Column<string>(type: "text", nullable: false),
                     CatalogTypeId = table.Column<int>(type: "int", nullable: false),
                     CatalogBrandId = table.Column<int>(type: "int", nullable: false),
                     AvailableStock = table.Column<int>(type: "int", nullable: false)
@@ -116,7 +116,7 @@ namespace Microsoft.eShopOnDapr.Services.Catalog.API.Infrastructure.Migrations
                     { 11, 100, 1, 3, "Cup<T> Pin", "11.png", 8.5m },
                     { 16, 100, 2, 5, "Dapr Zipper Hoodie", "16.png", 14.99m }
                 });
-
+            /*
             migrationBuilder.CreateIndex(
                 name: "IX_CatalogItem_CatalogBrandId",
                 table: "CatalogItem",
@@ -126,6 +126,7 @@ namespace Microsoft.eShopOnDapr.Services.Catalog.API.Infrastructure.Migrations
                 name: "IX_CatalogItem_CatalogTypeId",
                 table: "CatalogItem",
                 column: "CatalogTypeId");
+            */
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

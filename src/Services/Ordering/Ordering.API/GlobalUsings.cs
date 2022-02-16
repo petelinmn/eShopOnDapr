@@ -9,7 +9,7 @@ global using Microsoft.AspNetCore.Authorization;
 global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.SignalR;
-global using Microsoft.Data.SqlClient;
+global using Npgsql;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using Microsoft.eShopOnDapr.BuildingBlocks.EventBus;

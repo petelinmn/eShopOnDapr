@@ -21,7 +21,6 @@ public class OrderRepository : IOrderRepository
             return order;
         }
         catch (DbUpdateException ex)
-            when ((ex.InnerException as SqlException)?.Number == 2627)
         {
             return (await GetOrderByIdAsync(order.Id))!;
         }
