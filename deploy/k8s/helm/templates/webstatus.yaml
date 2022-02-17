@@ -10,6 +10,8 @@ data:
   ASPNETCORE_URLS: http://0.0.0.0:80
   HealthChecksUI__HealthChecks__0__Name: Basket API
   HealthChecksUI__HealthChecks__0__Uri: http://basket-api/hc
+  HealthChecksUI__HealthChecks__0__Name: Flow API
+  HealthChecksUI__HealthChecks__0__Uri: http://flow-api/hc
   HealthChecksUI__HealthChecks__1__Name: Catalog API
   HealthChecksUI__HealthChecks__1__Uri: http://catalog-api/hc
   HealthChecksUI__HealthChecks__2__Name: Identity API

@@ -13,6 +13,7 @@ public class Config
         new ApiScope[]
         {
                 new ApiScope("basket", "Access to Basket API"),
+                new ApiScope("flow", "Access to Flow API"),
                 new ApiScope("ordering", "Access to Ordering API"),
                 new ApiScope("shoppingaggr", "Access to Shopping Aggregator API")
         };
@@ -20,6 +21,11 @@ public class Config
     public static IEnumerable<ApiResource> ApiResources =>
         new ApiResource[]
         {
+                new ApiResource("flow-api", "Flow API")
+                {
+                    Scopes = { "flow" }
+
+                },
                 new ApiResource("basket-api", "Basket API")
                 {
                     Scopes = { "basket" }
@@ -65,6 +71,7 @@ public class Config
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         "basket",
+                        "flow",
                         "ordering",
                         "shoppingaggr"
                     },
@@ -82,6 +89,21 @@ public class Config
                     AllowedScopes =
                     {
                         "basket"
+                    }
+                },
+                new Client
+                {
+                    ClientId = "flowswaggerui",
+                    ClientName = "Flow Swagger UI",
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser = true,
+
+                    RedirectUris = { $"{configuration["FlowApiUrlExternal"]}/swagger/oauth2-redirect.html" },
+                    PostLogoutRedirectUris = { $"{configuration["FlowApiUrlExternal"]}/swagger/" },
+
+                    AllowedScopes =
+                    {
+                        "flow"
                     }
                 },
                 new Client
@@ -112,6 +134,7 @@ public class Config
                     AllowedScopes =
                     {
                         "basket",
+                        "flow",
                         "shoppingaggr"
                     }
                 }

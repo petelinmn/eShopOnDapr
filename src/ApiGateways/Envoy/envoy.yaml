@@ -87,6 +87,20 @@ static_resources:
                   auto_host_rewrite: true
                   prefix_rewrite: "/v1.0/invoke/basket-api/method/"
                   cluster: dapr
+              - name: "f-short"
+                match:
+                  prefix: "/f/"
+                route:
+                  auto_host_rewrite: true
+                  prefix_rewrite: "/v1.0/invoke/flow-api/method/"
+                  cluster: dapr
+              - name: "f-long"
+                match:
+                  prefix: "/flow-api/"
+                route:
+                  auto_host_rewrite: true
+                  prefix_rewrite: "/v1.0/invoke/flow-api/method/"
+                  cluster: dapr
               - name: "agg"
                 match:
                   prefix: "/"

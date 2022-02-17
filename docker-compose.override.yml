@@ -61,6 +61,28 @@ services:
       - "./dapr/components/:/components"
       - "./dapr/configuration/:/configuration"
 
+  flow-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - IdentityUrl=http://identity-api
+      - IdentityUrlExternal=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5105
+      - SeqServerUrl=http://seq
+    ports:
+      - "5109:80"
+      - "50004:50001"
+
+  flow-api-dapr:
+    command: ["./daprd",
+      "-app-id", "basket-api",
+      "-app-port", "80",
+      "-components-path", "/components",
+      "-config", "/configuration/eshop-config.yaml"
+      ]
+    volumes:
+      - "./dapr/components/:/components"
+      - "./dapr/configuration/:/configuration"
+
   blazor-client:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -102,6 +124,7 @@ services:
       - RetryMigrations=true
       - BlazorClientUrlExternal=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5104
       - BasketApiUrlExternal=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5103
+      - FlowApiUrlExternal=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5109
       - OrderingApiUrlExternal=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5102
       - ShoppingAggregatorApiUrlExternal=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5121
       # Temporarily while waiting for https://github.com/dapr/dotnet-sdk/issues/779 to get fixed.
@@ -176,6 +199,7 @@ services:
       - IdentityUrlExternal=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5105
       - SeqServerUrl=http://seq
       - BasketUrlHC=http://basket-api/hc
+      - FlowUrlHC=http://flow-api/hc
       - CatalogUrlHC=http://catalog-api/hc
       - IdentityUrlHC=http://identity-api/hc
     ports:

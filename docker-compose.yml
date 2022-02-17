@@ -35,6 +35,21 @@ services:
     depends_on:
       - basket-api
 
+  flow-api:
+    image: ${REGISTRY:-eshopdapr}/flow.api:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: src/Services/Flow/Flow.API/Dockerfile
+    depends_on:
+      - identity-api
+      - redis
+
+  flow-api-dapr:
+    image: "daprio/daprd:1.5.1"
+    network_mode: "service:flow-api"
+    depends_on:
+      - flow-api
+
   blazor-client:
     image: ${REGISTRY:-eshopdapr}/blazor.client:${TAG:-latest}
     build:
@@ -102,6 +117,7 @@ services:
       dockerfile: src/ApiGateways/Aggregators/Web.Shopping.HttpAggregator/Dockerfile
     depends_on:
       - basket-api
+      - flow-api
       - catalog-api
       - identity-api
       - ordering-api

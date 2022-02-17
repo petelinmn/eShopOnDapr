@@ -12,6 +12,7 @@ data:
   SeqServerUrl: http://seq
   BlazorClientUrlExternal: http://{{ .Values.externalDnsNameOrIP}}:30000
   BasketApiUrlExternal: http://{{ .Values.externalDnsNameOrIP}}:30005
+  FlowApiUrlExternal: http://{{ .Values.externalDnsNameOrIP}}:30009
   OrderingApiUrlExternal: http://{{ .Values.externalDnsNameOrIP}}:30002
   ShoppingAggregatorApiUrlExternal: http://{{ .Values.externalDnsNameOrIP}}:30006
   # Temporarily while waiting for https://github.com/dapr/dotnet-sdk/issues/779 to get fixed.

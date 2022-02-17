@@ -19,4 +19,5 @@ auth:
   secretStore: eshop-secretstore
 scopes:
 - basket-api
+- flow-api
 - ordering-api
