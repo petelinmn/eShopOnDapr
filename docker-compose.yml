@@ -56,6 +56,12 @@ services:
       context: .
       dockerfile: src/Web/BlazorClient.Host/Dockerfile
 
+  aspmvc-client:
+    image: ${REGISTRY:-eshopdapr}/aspmvc.client:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: src/Web/BlastAce.Api/Dockerfile
+
   catalog-api:
     image: ${REGISTRY:-eshopdapr}/catalog.api:${TAG:-latest}
     build:

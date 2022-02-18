@@ -1,5 +1,3 @@
-using Microsoft.eShopOnDapr.BlazorClient.Flow;
-
 namespace Microsoft.eShopOnDapr.BlazorClient;
 
 public class Program

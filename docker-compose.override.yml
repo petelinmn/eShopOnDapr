@@ -93,6 +93,14 @@ services:
     ports:
       - "5104:80"
 
+  aspmvc-client:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - ApiGatewayUrlExternal=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5202
+    ports:
+      - "5276:80"
+
   catalog-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
