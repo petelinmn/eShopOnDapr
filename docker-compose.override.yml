@@ -74,7 +74,7 @@ services:
 
   flow-api-dapr:
     command: ["./daprd",
-      "-app-id", "basket-api",
+      "-app-id", "flow-api",
       "-app-port", "80",
       "-components-path", "/components",
       "-config", "/configuration/eshop-config.yaml"

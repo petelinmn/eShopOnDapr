@@ -12,5 +12,5 @@ public record UserCheckoutAcceptedIntegrationEvent(
     DateTime CardExpiration,
     string CardSecurityNumber,
     Guid RequestId,
-    CustomerFlow Flow)
+    FlowData Flow)
     : IntegrationEvent;

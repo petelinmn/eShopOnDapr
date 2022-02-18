@@ -1,3 +1,5 @@
+using Microsoft.eShopOnDapr.BlazorClient.Flow;
+
 namespace Microsoft.eShopOnDapr.BlazorClient;
 
 public class Program
@@ -21,12 +23,17 @@ public class Program
             client => client.BaseAddress = new Uri(settings.ApiGatewayUrlExternal))
             .AddHttpMessageHandler<ApiAuthorizationMessageHandler>();
 
+        builder.Services.AddHttpClient<FlowClient>(
+            client => client.BaseAddress = new Uri(settings.ApiGatewayUrlExternal))
+            .AddHttpMessageHandler<ApiAuthorizationMessageHandler>();
+
         builder.Services.AddHttpClient<OrderClient>(
             client => client.BaseAddress = new Uri(settings.ApiGatewayUrlExternal))
             .AddHttpMessageHandler<ApiAuthorizationMessageHandler>();
 
         builder.Services
             .AddBlazoredToast()
+            .AddScoped<UserFlow>()
             .AddScoped<UserBasket>();
 
         builder.Services.AddOidcAuthentication(options =>

@@ -43,6 +43,14 @@ public class BasketController : ControllerBase
         return Ok(await _repository.UpdateBasketAsync(value));
     }
 
+    [HttpGet("test")]
+    [ProducesResponseType(typeof(CustomerBasket), (int)HttpStatusCode.OK)]
+    public async Task<ActionResult<Object>> Test()
+    {
+        return Ok(new { Message = "Basket Hello!" });
+    }
+
+
     [HttpPost("checkout")]
     [ProducesResponseType((int)HttpStatusCode.Accepted)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]

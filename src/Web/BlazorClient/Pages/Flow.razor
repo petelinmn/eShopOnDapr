@@ -1,0 +1,17 @@
+﻿@page "/flow"
+@inject UserFlow _flow
+
+<div class="esh-orders">
+    Message from Flow node: @Message
+</div>
+
+@code {
+    private string Message = "Hello";
+
+    protected override async Task OnParametersSetAsync()
+    {
+        Console.WriteLine($"&&FlowLoader -> TryLoadFlow -> Loading flow");
+        var result = await _flow.GetData();
+        Message = result.State;
+    }
+}

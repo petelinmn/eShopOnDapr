@@ -15,5 +15,3 @@ public class OrderStatusChangedToSubmittedIntegrationEventHandler
         _repository.DeleteFlowAsync(@event.BuyerId);
 }
 
-
-

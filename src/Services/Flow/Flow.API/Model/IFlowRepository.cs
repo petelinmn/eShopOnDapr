@@ -2,7 +2,7 @@
 
 public interface IFlowRepository
 {
-    Task<CustomerFlow> GetFlowAsync(string customerId);
-    Task<CustomerFlow> UpdateFlowAsync(CustomerFlow flow);
+    Task<FlowData> GetFlowAsync(int flowId);
+    Task<FlowData> UpdateFlowAsync(FlowData flow);
     Task DeleteFlowAsync(string id);
 }
